@@ -1,0 +1,60 @@
+<%- include("../partials/header.ejs") %>
+
+<script src="/scripts/home.js" defer></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+<link rel="stylesheet" href="/stylesheets/signup.css">
+
+<% if(error && error.length > 0){ %>
+    <div class="alert error" id="error-bar">
+        <i class="fas fa-exclamation-circle"></i>
+        <%= error %>
+        <span class="closebtn">&times;</span>
+    </div>
+<% } %>
+
+<% if(success && success.length > 0){ %>
+    <div class="alert success" id="success-bar">
+        <i class="fas fa-check-circle"></i>
+        <%= success %>
+        <span class="closebtn">&times;</span>
+    </div>
+<% } %>
+
+<div class="contentbox">
+<div class="formbox">
+    <div id="ans">
+        <a href="/" id="ans">ANS</a>
+    </div>
+    <div id="desc">
+        <span>Sign up, it's free.</span>
+    </div>
+    <hr>
+    
+    <form action="/signup" method="POST">
+        <div class="inputbox">
+            <p>Create a username.</p>
+        <input type="text" name="username" placeholder="Create a username." autocomplete="off" required>
+        </div>
+        <div class="inputbox">
+            <p>Create a password.</p>
+            <input type="password" name="password" placeholder="Create a password." required>
+        </div>
+        <div class="inputbox">
+            <p>What's your email?</p>
+            <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{1,}$" name="email" placeholder="Enter your email." autocomplete="off" required>
+        </div>
+        <div class="inputbox">
+            <p>What should we call you?</p>
+            <input type="text" name="profilename" placeholder="Enter a profile name." autocomplete="off" required>
+        </div>
+        <div class="inputbox">
+            <input type="submit" value="SIGN UP">
+        </div>
+        <div class="inputbox" id="haveacc">
+            <span>Have an account? <a href="/login" id="click_login">Log in.</a></span>
+        </div>
+    </form>
+</div>
+</div>
+
+<%- include("../partials/footer.ejs") %>

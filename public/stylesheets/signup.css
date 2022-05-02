@@ -1,0 +1,226 @@
+*
+{
+    box-sizing: border-box;
+    font-family: 'Kanit', sans-serif;
+}
+
+body
+{
+    margin: 0;
+    background: #17181b;
+}
+
+::-webkit-scrollbar
+{
+    width: 5px;
+}
+
+::-webkit-scrollbar-track
+{
+    border-radius: 5px;
+    box-shadow: inset 0 0 10px rgb(0, 0, 0.25);
+}
+
+::-webkit-scrollbar-thumb
+{
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.356);
+}
+
+::-webkit-scrollbar-thumb:hover
+{
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.212);
+}
+
+#ans
+{
+    font-weight: 700;
+    font-size: 60px;
+    text-align: center;
+}
+
+#ans a
+{
+    color: white;
+    text-decoration: none;
+}
+
+#desc
+{
+    font-weight: 700;
+    font-size: 30px;
+    text-align: center;
+    padding-bottom: 10px;
+    cursor: context-menu;
+    color: white;
+}
+
+hr
+{
+    margin: 1rem 0;
+    color: inherit;
+    background-color: currentColor;
+    border: 0;
+    opacity: .25;
+    height: 1px;
+    display: block;
+    unicode-bidi: isolate;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    overflow: hidden;
+    color: white;
+}
+
+.contentbox
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    color: white;
+}
+
+.contentbox .formbox
+{
+    width: 540px;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.contentbox .formbox .inputbox
+{
+    margin-bottom: 20px;
+}
+
+.contentbox .formbox .inputbox p
+{
+    font-weight: 400;
+    font-size: 18px;
+    margin-bottom: 5px;
+    cursor: context-menu;
+}
+
+.contentbox .formbox .inputbox input
+{
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px 20px;
+    outline: none;
+    font-weight: 400;
+    font-size: 16px;
+    border: 1px solid gray;
+    background: transparent;
+    font-weight: 400;
+    font-size: 16px;
+    color: white;
+}
+
+.contentbox .formbox .inputbox input[type="submit"]
+{
+    font-weight: 700;
+    font-size: 22px;
+    background: black;
+    color: white;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 25px;
+}
+
+.contentbox .formbox .inputbox input[type="submit"]:hover
+{
+    color: #19B3D3;
+    transition: 0.5s;
+}
+
+.contentbox .formbox .remember
+{
+    font-weight: 400px;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+#haveacc
+{
+    font-weight: 400px;
+    font-size: 18px;
+    text-align: center;
+    cursor: context-menu;
+}
+
+#click_login, #terms
+{
+    color: gray;
+}
+
+#click_login:hover, #terms:hover
+{
+    color: #19B3D3;
+    letter-spacing: 1px;
+    transition: 0.5s;
+}
+
+.alert.error
+{
+    padding: 10px;
+    background-color: #f44336;
+    color: white;
+    transition: opacity 0.6s;
+    margin-bottom: 0;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-right: 10px;
+    float: right;
+}
+
+.alert.success
+{
+    padding: 10px;
+    background-color: #04AA6D;
+    color: white;
+    transition: opacity 0.6s;
+    margin-bottom: 0;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-right: 10px;
+    float: right;
+}
+
+.closebtn 
+{
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    font-size: 26px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    float: right;
+}
+
+.closebtn:hover
+{
+    color: #333436;
+    transition: 0.3s;
+}
+
+.fas.fa-exclamation-circle, .fas.fa-check-circle
+{
+    margin-right: 5px;
+}
+
+@media (max-width: 450px)
+{
+    #ans
+    {
+        font-size: 50px;
+    }
+    #desc
+    {
+        font-size: 20px;
+    }
+}

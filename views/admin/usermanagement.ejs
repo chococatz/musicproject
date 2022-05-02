@@ -1,0 +1,122 @@
+<%- include("../partials/header.ejs") %>
+
+<script src="/scripts/home.js" defer></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+<link rel="stylesheet" href="/stylesheets/usermanagement.css">
+
+<div class="wrapper">
+    <input type="checkbox" id="check">
+    <!--header menu start-->
+    <div class="header">
+        <div class="header-menu">
+            <div class="title"><a href="/" id="ans">ANS</a></div>
+            <div class="sidebar-btn">
+                <label for="check">
+                    <i class="fas fa-bars"></i>
+                </label>
+            </div>
+            <ul>
+                <form action="/usermanagement/search" method="POST">
+                    <div class="container">
+                        <div class="search_wrap search_wrap_3">
+                            <div class="search_box">
+                                <input type="text" class="input" name="key" placeholder="Search user by username" autocomplete="off">
+                                    <div class="btn btn_common">
+                                        <i class="fas fa-search"></i>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <% if(!currentUser){ %>
+                    <li title="Sign up"><a href="/signup"><i class="fas fa-user-plus"></i></a></li>
+                    <li title="Log in"><a href="/login"><i class="fas fa-sign-in-alt"></i></a></li>
+                <% } else { %>
+                    <li title="Logout"><a href="/logout"><i class="fas fa-power-off"></i></a></li>
+                <% } %>
+            </ul>
+        </div>
+    </div>
+    <!--header menu end-->
+    
+    <!--mobile navigation bar start-->
+    <div class="mobile_nav">
+        <div class="nav_bar">
+            <% if(!currentUser){ %>
+            <% } else { %>
+                <img src="<%= currentUser.profileimage %>" class="mobile_profile_image" alt="" onerror="this.style.display='none'">
+            <% } %>
+            <i class="fa fa-bars nav_btn" onclick="toggleMobile();"></i>
+        </div>
+        <div class="mobile_nav_items">
+            <a href="/home"><i class="fas fa-home"></i><span>Home</span></a>
+            <a href="/favorite"><i class="fas fa-star"></i><span>Favorite</span></a>
+            <a href="/profile"><i class="fas fa-user-circle"></i><span>Profile</span></a>
+            <a href="/addsong"><i class="fas fa-plus"></i><span>Add song</span></a>
+            <a href=""><i class="fas fa-user-cog"></i><span>User management</span></a>
+        </div>
+    </div>
+    <!--mobile navigation bar end-->
+
+    <!--sidebar start-->
+    <div class="sidebar">
+        <div class="profile_info">
+            <% if(!currentUser){ %>
+            <% } else { %>
+                <img src="<%= currentUser.profileimage %>" class="profile_image" alt="" onerror="this.style.display='none'">
+                <h4><%= currentUser.profilename %></h4>
+            <% } %>
+        </div>
+        <div class="sidetext">
+            <a href="/home"><i class="fas fa-home"></i><span>Home</span></a>
+            <a href="/favorite"><i class="fas fa-star"></i><span>Favorite</span></a>
+            <a href="/profile"><i class="fas fa-user-circle"></i><span>Profile</span></a>
+            <a href="/addsong"><i class="fas fa-plus"></i><span>Add song</span></a>
+            <a href="" class="active"><i class="fas fa-user-cog"></i><span>User management</span></a>
+        </div>
+    </div>
+    <!--sidebar end-->
+
+    <div class="content">
+        <% if(error && error.length > 0){ %>
+            <div class="alert error" id="error-bar">
+                <i class="fas fa-exclamation-circle"></i>
+                <%= error %>
+                <span class="closebtn">&times;</span>
+            </div>
+        <% } %>
+        
+        <% if(success && success.length > 0){ %>
+            <div class="alert success" id="success-bar">
+                <i class="fas fa-check-circle"></i>
+                <%= success %>
+                <span class="closebtn">&times;</span>
+            </div>
+        <% } %>
+        
+        <p class="topic">User management</p>
+        <div class="profile">
+            <div class="row nav">
+                <div class="col-xl-1 col-lg-1 col-md-1 col-1">#</div>
+                <div class="col-xl-4 col-lg-4 col-md-7 col-5">Username</div>
+                <div class="col-xl-4 col-lg-4 profilename">Profile name</div>
+                <div class="col-xl-2 col-lg-2 col-md-3 col-4">Rank</div>
+                <div class="col-xl-1 col-lg-1 col-md-1 col-2"></div>
+            </div>
+            <hr class="break-line">
+            <% var i=1; %>
+            <% User.forEach(User => { %>
+            <div class="row user">
+                <div class="col-xl-1 col-lg-1 col-md-1 col-1"><%= i++; %></div>
+                <div class="col-xl-4 col-lg-4 col-md-7 col-5"><%= User.username %></div>
+                <div class="col-xl-4 col-lg-4 profilename"><%= User.profilename %></div>
+                <div class="col-xl-2 col-lg-2 col-md-3 col-4"><%= User.rank %></div>
+                <div class="col-xl-1 col-lg-1 col-md-1 col-2"><a href="/usermanagement/<%= User._id %>/edit" title="Edit user information"><i class="fas fa-edit"></i></a></div>
+            </div>
+            <% }) %>
+        </div>
+    </div>
+</div>
+
+<%- include("../partials/footer.ejs") %>

@@ -1,0 +1,362 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Kanit', sans-serif;
+}
+
+.banner
+{
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0, 0, 0, 0.2)), 
+    url("/images/index-bg.jpg"); 
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+::-webkit-scrollbar
+{
+    width: 5px;
+}
+
+::-webkit-scrollbar-track
+{
+    border-radius: 5px;
+    box-shadow: inset 0 0 10px rgb(0, 0, 0.25);
+}
+
+::-webkit-scrollbar-thumb
+{
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.356);
+}
+
+::-webkit-scrollbar-thumb:hover
+{
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.212);
+}
+
+p
+{
+    font-weight: 400;
+    color: white;
+}
+
+.banner
+{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner .content
+{
+    max-width: 900px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.banner .content h2
+{
+    font-size: 90px;
+    font-weight: 700;
+    color: white;
+    cursor: context-menu;
+}
+
+.banner .content p
+{
+    font-size: 24px;
+    color: white;
+    cursor: context-menu;
+}
+
+.button
+{
+    font-size: 24px;
+    color: white;
+    display: inline-block;
+    padding: 10px 30px;
+    margin-top: 3%;
+    text-decoration: none;
+    border: 3px solid white;
+    border-radius: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 50px;
+    padding-left: 50px;
+    transition: 1s;
+}
+
+.button:hover
+{
+    background-color: #22242A;
+    transition: 1s;
+}
+
+header
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 100px;
+    z-index: 10000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo
+{
+    color: white;
+    font-weight: 700;
+    font-size: 48px;
+    text-decoration: none;
+}
+
+header ul
+{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+header ul li
+{
+    list-style: none;
+    margin-left: 30px;
+    font-weight: 700;
+    font-size: 20px;
+    
+}
+
+header ul li a
+{
+    text-decoration: none;
+    padding: 6px 15px;
+    color: white;
+    border-radius: 20px;
+}
+
+header ul li a:hover
+{
+    background: #19B3D3;  /* #8a74fa; */
+    color: black;
+    transition: 0.5s;
+}
+
+@media (max-width: 991px)
+{
+    header
+    {
+        padding: 40px 100px;
+        z-index: 1000;
+    }
+    header ul li a
+    {   
+        color: white;
+        font-size: 24px;
+        border-radius: 20px;
+    }
+    .navi
+    {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        display: block;
+        padding: 150px 30px;
+        width: 100%;
+        height: 100%;
+        background: black;
+        transition: 1s;
+        z-index: 999;
+    }
+    .navi.active
+    {
+        right: -60%;
+    }
+    .navi li
+    {
+        margin-bottom: 40px;
+    }
+    .menu
+    {
+        width: 40px;
+        height: 40px;
+        background: url("/images/index-hamburger.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 30px;
+        cursor: pointer;
+        z-index: 1000;
+    }
+    .menu.active
+    {
+        width: 40px;
+        height: 40px;
+        background: url("/images/index-close.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 30px;
+        cursor: pointer;
+        z-index: 1000;
+        transition: 1s;
+    }
+    .banner .content h2
+    {
+        font-size: 70px;
+    }
+    .banner .content p
+    {
+        font-size: 20px;
+    }
+    .button
+    {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 712px)
+{
+    header
+    {
+        padding: 40px 100px;
+        z-index: 1000;
+    }
+    header .logo
+    {
+        font-size: 48px;
+    }
+    .navi.active
+    {
+        right: -50%;
+    }
+    .banner .content h2
+    {
+        font-size: 56px;
+    }
+    .banner .content p
+    {
+        font-size: 18px;
+    }
+    .button
+    {
+        font-size: 18px;
+        padding-right: 35px;
+        padding-left: 35px;
+        border: 2px solid white;
+    }
+}
+
+@media (max-width: 576px)
+{
+    header
+    {
+        padding: 50px 70px;
+        z-index: 1000;
+    }
+    header .logo
+    {
+        font-size: 40px;
+    }
+    .navi.active
+    {
+        right: 0%;
+    }
+    .banner .content h2
+    {
+        font-size: 48px;
+    }
+    .banner .content p
+    {
+        font-size: 16px;
+    }
+    .button
+    {
+        font-size: 16px;
+        padding-right: 25px;
+        padding-left: 25px;
+    }
+    .menu, .menu.active
+    {
+        background-size: 25px;
+    }
+}
+
+@media (max-width: 468px)
+{
+    .banner .content h2
+    {
+        font-size: 40px;
+    }
+    .button
+    {
+        font-size: 16px;
+        padding-right: 25px;
+        padding-left: 25px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+}
+
+@media (max-width: 400px)
+{
+    header
+    {
+        padding: 50px 50px;
+        z-index: 1000;
+    }
+    .banner .content h2
+    {
+        font-size: 36px;
+    }
+    .banner .content p
+    {
+        font-size: 14px;
+    }
+    .button
+    {
+        font-size: 14px;
+        padding-right: 20px;
+        padding-left: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+}
+
+@media (max-width: 320px)
+{
+    header
+    {
+        padding: 50px 40px;
+        z-index: 1000;
+    }
+    .banner .content h2
+    {
+        font-size: 30px;
+    }
+    .banner .content p
+    {
+        font-size: 14px;
+    }
+    .button
+    {
+        font-size: 14px;
+        padding-right: 20px;
+        padding-left: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        border: 2px solid white;
+    }
+}

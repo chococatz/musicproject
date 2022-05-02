@@ -1,0 +1,56 @@
+<%- include("../partials/header.ejs") %>
+
+<script src="/scripts/home.js" defer></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+<link rel="stylesheet" href="/stylesheets/login.css">
+
+<% if(error && error.length > 0){ %>
+    <div class="alert error" id="error-bar">
+        <i class="fas fa-exclamation-circle"></i>
+        <%= error %>
+        <span class="closebtn">&times;</span>
+    </div>
+<% } %>
+
+<% if(success && success.length > 0){ %>
+    <div class="alert success" id="success-bar">
+        <i class="fas fa-check-circle"></i>
+        <%= success %>
+        <span class="closebtn">&times;</span>
+    </div>
+<% } %>
+
+<div class="contentbox">
+    <div class="formbox">
+        <div id="ans">
+            <a href="/" id="ans">ANS</a>
+        </div>
+        <div id="desc">
+            <span>Log in to your account.</span>
+        </div>
+        <hr>
+
+        <form action="/login" method="POST">
+            <div class="inputbox">
+                <p>Username</p>
+                <input type="text" name="username" placeholder="Username" autocomplete="off" required>
+            </div>
+            <div class="inputbox" id="passwd">
+                <p>Password</p>
+                <input type="password" name="password" placeholder="Password" required>
+            </div>
+            <div class="remember">
+                <div class="remember_text"><input type="checkbox" name="remember"> Remember me</div>
+            </div>
+            <div class="inputbox">
+                <input type="submit" value="LOG IN">
+            </div>
+            <div class="inputbox" id="newacc">
+                <span>Don't have an account? <a href="/signup" id="click_signup">Sign up.</a></span>
+            </div>
+            
+        </form>
+    </div>
+</div>
+
+<%- include("../partials/footer.ejs") %>

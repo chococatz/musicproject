@@ -1,0 +1,128 @@
+<%- include("../partials/header.ejs") %>
+
+<script src="/scripts/edituser.js" defer></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+<link rel="stylesheet" href="/stylesheets/edituser.css">
+
+<div class="wrapper">
+    <input type="checkbox" id="check">
+    <!--header menu start-->
+    <div class="header">
+        <div class="header-menu">
+            <div class="title"><a href="/" id="ans">ANS</a></div>
+            <div class="sidebar-btn">
+                <label for="check">
+                    <i class="fas fa-bars"></i>
+                </label>
+            </div>
+            <ul>
+                <% if(!currentUser){ %>
+                    <li title="Sign up"><a href="/signup"><i class="fas fa-user-plus"></i></a></li>
+                    <li title="Log in"><a href="/login"><i class="fas fa-sign-in-alt"></i></a></li>
+                <% } else { %>
+                    <li title="Logout"><a href="/logout"><i class="fas fa-power-off"></i></a></li>
+                <% } %>
+            </ul>
+        </div>
+    </div>
+    <!--header menu end-->
+    
+    <!--mobile navigation bar start-->
+    <div class="mobile_nav">
+        <div class="nav_bar">
+            <% if(!currentUser){ %>
+            <% } else { %>
+                <img src="<%= currentUser.profileimage %>" class="mobile_profile_image" alt="" onerror="this.style.display='none'">
+            <% } %>
+            <i class="fa fa-bars nav_btn" onclick="toggleMobile();"></i>
+        </div>
+        <div class="mobile_nav_items">
+            <a href="/home"><i class="fas fa-home"></i><span>Home</span></a>
+            <a href="/favorite"><i class="fas fa-star"></i><span>Favorite</span></a>
+            <a href="/profile"><i class="fas fa-user-circle"></i><span>Profile</span></a>
+            <a href="/addsong"><i class="fas fa-plus"></i><span>Add song</span></a>
+            <a href="/usermanagement"><i class="fas fa-user-cog"></i><span>User management</span></a>
+        </div>
+    </div>
+    <!--mobile navigation bar end-->
+
+    <!--sidebar start-->
+    <div class="sidebar">
+        <div class="profile_info">
+        <% if(!currentUser){ %>
+        <% } else { %>
+            <img src="<%= currentUser.profileimage %>" class="profile_image" alt="" onerror="this.style.display='none'">
+            <h4><%= currentUser.profilename %></h4>
+        <% } %>
+        </div>
+        <div class="sidetext">
+            <a href="/home"><i class="fas fa-home"></i><span>Home</span></a>
+            <a href="/favorite"><i class="fas fa-star"></i><span>Favorite</span></a>
+            <a href="/profile"><i class="fas fa-user-circle"></i><span>Profile</span></a>
+            <a href="/addsong"><i class="fas fa-plus"></i><span>Add song</span></a>
+            <a href="/usermanagement"><i class="fas fa-user-cog"></i><span>User management</span></a>
+        </div>
+    </div>
+    <!--sidebar end-->
+
+    <div class="content">
+        <p class="topic">Edit user information</p>
+        <hr>
+        <div class="contentbox">
+            <div class="formbox">
+                <form action="/usermanagement/<%= User._id %>?_method=put" method="POST" enctype="multipart/form-data">
+                    <div class="inputbox">
+                        <p>Username</p>
+                        <input type="text" name="info[username]" placeholder="<%= User.username %>" value="<%= User.username %>" autocomplete="off">
+                    </div>
+                    <div class="inputbox">
+                        <p>Email</p>
+                        <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{1,}$" name="info[email]" placeholder="<%= User.email %>" value="<%= User.email %>" autocomplete="off">
+                    </div>
+                    <div class="inputbox">
+                        <p>Profile name</p>
+                        <input type="text" name="info[profilename]" placeholder="<%= User.profilename %>" value="<%= User.profilename %>" autocomplete="off">
+                    </div>
+                    <div class="inputbox">
+                        <p>Rank</p>
+                        <select name="info[rank]">
+                            <option value="" selected disabled hidden><%= User.rank %></option>
+                            <option value="Admin">Admin</option>
+                            <option value="Premium">Premium</option>
+                            <option value="Member">Member</option>
+                        </select>
+                    </div>
+                    <div class="inputbox" id="input_img">
+                        <p>Profile image</p>
+                        <input type="file" id="inpFile" name="profile[profileimage]" accept="image/*" autocomplete="off">
+                        <img src="<%= User.profileimage %>" class="img-fluid" onerror="this.style.display='none'" height="250px" width="250px" id="cur_img">
+                        <div class="image-preview" id="imagePreview">
+                            <img src="" class="image-preview__image">
+                        </div>
+                    </div>
+                    <div class="inputbox save">
+                        <input type="submit" value="SAVE" id="save_btn">
+                    </div>
+                </form>
+                <form action="/usermanagement/delete/<%= User._id %>?_method=DELETE" method="POST" id="delete_btn">
+                    <button type="button" class="edit_delete" onclick="confirmation()">DELETE USER</button>
+                    <button type="submit" id="confirm_verify"></button>
+                </form>
+            </div>
+        </div>
+        <div id="confirm_frame" >
+            <div class="popup_box">
+                <i id="confirm_icon" class="fas fa-exclamation"></i>
+                <h1 id="confirm_text">DELETE USER</h1>
+                <label id="confirm_text2">Are you sure to proceed?</label>
+                <div class="btns">
+                    <a id="no_btn" class="btn1" onclick="cancel()">Cancel</a>
+                    <a id="yes_btn" class="btn2" onclick="confirm()">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("../partials/footer.ejs") %>
